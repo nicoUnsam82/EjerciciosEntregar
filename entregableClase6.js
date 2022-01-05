@@ -73,6 +73,9 @@ var productoCinco = {
     id: 0
 }; //ID CERO ES NO ASIGNADO
 var contenedor = new contenedor_js_1.default("TV");
+app.get("/", function (req, res) {
+    res.send("/productos ->DEVUELVE TODOS LOS PRODUCTOS Y /productoRandom -> DEVUELVE UN PRODUCTO AL AZAR");
+}); //FIN DEL GET
 app.get("/productos", function (req, res) {
     (function () { return __awaiter(void 0, void 0, void 0, function () {
         var productos;

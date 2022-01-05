@@ -51,7 +51,10 @@ let productoCinco: Producto = {
 };//ID CERO ES NO ASIGNADO
 
 let contenedor: Contenedor = new Contenedor("TV");
-
+app.get("/", (req: any, res: any) => {
+   res.send("/productos ->DEVUELVE TODOS LOS PRODUCTOS Y /productoRandom -> DEVUELVE UN PRODUCTO AL AZAR");
+   
+});//FIN DEL GET
 
 app.get("/productos", (req: any, res: any) => {
 
