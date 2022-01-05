@@ -1,0 +1,19 @@
+{
+  "name": "clase-6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node entregableClase6.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
