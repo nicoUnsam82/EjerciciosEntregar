@@ -28,7 +28,7 @@ export default class Contenedor {
 
             }//FIN DEL IF
             let largoIdBorrados:number =Contenedor.idBorrados.length;
-            
+            console.log(largoIdBorrados);
             switch(largoIdBorrados){
 
             case 0:
@@ -40,10 +40,10 @@ export default class Contenedor {
             default:
                 this.productos.push(objeto);
                 let idAsignado:number=Contenedor.idBorrados[0]
-                this.productos[largoArrayObjetos].id = Contenedor.idBorrados[0];
+                this.productos[largoArrayObjetos].id = idAsignado;
                 Contenedor.idBorrados.shift();
-                console.log(this.productos[idAsignado]);
-                return this.productos[idAsignado];            
+                console.log(this.productos[largoArrayObjetos]);
+                return this.productos[largoArrayObjetos];            
 
             }
   

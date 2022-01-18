@@ -52,6 +52,7 @@ var Contenedor = /** @class */ (function () {
                         idMasAlto = this.productos.reduce(function (anterior, proximo) { return anterior > proximo.id ? anterior : proximo.id; }, 0);
                     } //FIN DEL IF
                     largoIdBorrados = Contenedor.idBorrados.length;
+                    console.log(largoIdBorrados);
                     switch (largoIdBorrados) {
                         case 0:
                             this.productos.push(objeto);
@@ -62,10 +63,10 @@ var Contenedor = /** @class */ (function () {
                         default:
                             this.productos.push(objeto);
                             idAsignado = Contenedor.idBorrados[0];
-                            this.productos[largoArrayObjetos].id = Contenedor.idBorrados[0];
+                            this.productos[largoArrayObjetos].id = idAsignado;
                             Contenedor.idBorrados.shift();
-                            console.log(this.productos[idAsignado]);
-                            return [2 /*return*/, this.productos[idAsignado]];
+                            console.log(this.productos[largoArrayObjetos]);
+                            return [2 /*return*/, this.productos[largoArrayObjetos]];
                     }
                 } //FIN DEL TRY
                 catch (e) {
