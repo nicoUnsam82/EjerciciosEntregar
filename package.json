@@ -1,5 +1,5 @@
 {
-  "name": "clase-6",
+  "name": "clase-8",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,7 +12,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node entregableClase6.js"
+    "start": "node entregableClase8.js"
   },
   "author": "",
   "license": "ISC"
