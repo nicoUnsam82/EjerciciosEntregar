@@ -44,98 +44,123 @@ var express = require('express');
 var router = express.Router();
 var contenedor = new contenedor_js_1.default;
 router.get('/productos', function (req, res) {
-    (function () { return __awaiter(void 0, void 0, void 0, function () {
-        var productos;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, contenedor.obtenerObjetoEnProductos()];
-                case 1:
-                    productos = _a.sent();
-                    res.send(JSON.stringify(productos));
-                    console.log(productos);
-                    return [2 /*return*/];
-            }
-        });
-    }); } //FIN ASYNC
-    )();
+    try {
+        (function () { return __awaiter(void 0, void 0, void 0, function () {
+            var productos;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, contenedor.obtenerObjetoEnProductos()];
+                    case 1:
+                        productos = _a.sent();
+                        res.send(JSON.stringify(productos));
+                        console.log(productos);
+                        return [2 /*return*/];
+                }
+            });
+        }); } //FIN ASYNC
+        )();
+    }
+    catch (e) {
+        res.send(e);
+    }
 });
 router.post('/productos', function (req, res) {
-    (function () { return __awaiter(void 0, void 0, void 0, function () {
-        var producto;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    console.log(req.body);
-                    return [4 /*yield*/, contenedor.guardar(req.body)];
-                case 1:
-                    producto = _a.sent();
-                    res.send(JSON.stringify(producto));
-                    return [2 /*return*/];
-            }
-        });
-    }); } //FIN ASYNC
-    )();
+    try {
+        (function () { return __awaiter(void 0, void 0, void 0, function () {
+            var producto;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(req.body);
+                        return [4 /*yield*/, contenedor.guardar(req.body)];
+                    case 1:
+                        producto = _a.sent();
+                        res.send(JSON.stringify(producto));
+                        return [2 /*return*/];
+                }
+            });
+        }); } //FIN ASYNC
+        )();
+    }
+    catch (e) {
+        res.send(e);
+    }
 });
 router.get('/productos/:id', function (req, res) {
-    (function () { return __awaiter(void 0, void 0, void 0, function () {
-        var producto;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!isNaN(req.params.id)) return [3 /*break*/, 1];
-                    res.send({ error: "el parametro no es numero" });
-                    return [3 /*break*/, 3];
-                case 1: return [4 /*yield*/, contenedor.obtenerObjetoPorId(req.params.id)];
-                case 2:
-                    producto = _a.sent();
-                    res.send(JSON.stringify(producto));
-                    console.log("" + producto);
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
-            }
-        });
-    }); } //FIN ASYNC
-    )();
+    try {
+        (function () { return __awaiter(void 0, void 0, void 0, function () {
+            var producto;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!isNaN(req.params.id)) return [3 /*break*/, 1];
+                        res.send({ error: "el parametro no es numero" });
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, contenedor.obtenerObjetoPorId(req.params.id)];
+                    case 2:
+                        producto = _a.sent();
+                        res.send(JSON.stringify(producto));
+                        console.log("" + producto);
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); } //FIN ASYNC
+        )();
+    }
+    catch (e) {
+        res.send(e);
+    }
 });
 router.put('/productos/:id', function (req, res) {
-    (function () { return __awaiter(void 0, void 0, void 0, function () {
-        var producto;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!isNaN(req.params.id)) return [3 /*break*/, 1];
-                    res.send({ error: "el parametro no es numero" });
-                    return [3 /*break*/, 3];
-                case 1: return [4 /*yield*/, contenedor.actualizarObjetoPorId(req.params.id, req.body)];
-                case 2:
-                    producto = _a.sent();
-                    res.send("id actualizado " + req.params.id + " y producto actualizado:" + JSON.stringify(producto));
-                    console.log("" + producto);
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
-            }
-        });
-    }); } //FIN ASYNC
-    )();
+    try {
+        (function () { return __awaiter(void 0, void 0, void 0, function () {
+            var producto;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!isNaN(req.params.id)) return [3 /*break*/, 1];
+                        res.send({ error: "el parametro no es numero" });
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, contenedor.actualizarObjetoPorId(req.params.id, req.body)];
+                    case 2:
+                        producto = _a.sent();
+                        res.send("id actualizado " + req.params.id + " y producto actualizado:" + JSON.stringify(producto));
+                        console.log("" + producto);
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); } //FIN ASYNC
+        )();
+    }
+    catch (e) {
+        res.send(e);
+    }
 });
 router.delete('/productos/:id', function (req, res) {
-    (function () { return __awaiter(void 0, void 0, void 0, function () {
-        var producto;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!isNaN(req.params.id)) return [3 /*break*/, 1];
-                    res.send({ error: "el parametro no es numero" });
-                    return [3 /*break*/, 3];
-                case 1: return [4 /*yield*/, contenedor.borrarObjetoPorId(req.params.id)];
-                case 2:
-                    producto = _a.sent();
-                    res.send("id eliminado: " + req.params.id + " y producto eliminado:" + JSON.stringify(producto));
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
-            }
-        });
-    }); } //FIN ASYNC
-    )();
+    try {
+        (function () { return __awaiter(void 0, void 0, void 0, function () {
+            var producto;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!isNaN(req.params.id)) return [3 /*break*/, 1];
+                        res.send({ error: "el parametro no es numero" });
+                        return [3 /*break*/, 3];
+                    case 1: return [4 /*yield*/, contenedor.borrarObjetoPorId(req.params.id)];
+                    case 2:
+                        producto = _a.sent();
+                        res.send("id eliminado: " + req.params.id + " y producto eliminado:" + JSON.stringify(producto));
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); } //FIN ASYNC
+        )();
+    }
+    catch (e) {
+        res.send(e);
+    }
 });
 module.exports = router;
