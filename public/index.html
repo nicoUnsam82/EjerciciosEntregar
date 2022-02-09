@@ -9,6 +9,8 @@
     <meta name="keywords" content="">
     <title>EJERCICIOS DE PRACTICA</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/index.js"></script>
     <!--JQUERY UI PARA AUTOCOMPLETAR-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +30,7 @@
             </ol>
         </nav>
 
-        <h1 class="encabezado__titulos display-4">EJERCICIO CLASE 8</h1>
+        <h1 class="encabezado__titulos display-4">EJERCICIO CLASE 9</h1>
 
     </header>
 
@@ -37,7 +39,7 @@
         <section>
 
             <!--INICIO FORMULARIO DE PRODUCTOS-->
-            <form id="datosManuales" class="row g-6" action="/api/productos" method="post">
+            <form id="productoAgregar" class="row g-6" action="/api/productos" method="post">
                 <!-- CARD 1 -->
                 <div class="col-xl-6 col-md-10 mb-5 d-inline-flex">
                     <div class="card border-left-primary shadow h-100 py-2">
@@ -66,8 +68,13 @@
 
                         </div>
                     </div>
-                </div>
+                </div><!--LISTADOS DE PRODUCTOS-->
+                
+                <div id="hbsTablaProductos">
 
+
+                </div>
+                <!--FIN LISTADOS DE PRODUCTOS-->
             </form>
             <!--FIN DE FORMULARIO-->
 
@@ -76,7 +83,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; <a href="#" target="_blank">EJERCIOS DE PRACTICA</a></span>
+                    <span>Copyright &copy; <a href="#" target="_blank">EJERCICIOS DE PRACTICA</a></span>
                 </div>
             </div>
         </footer>
