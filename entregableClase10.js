@@ -1,10 +1,11 @@
-
-import path from "path";
 const express = require("express");
 const hbs= require("express-handlebars");
 const productos = require('./rutas/productos')
 const { Server: HttpServer } = require('http');
 const { Server: IOServer } = require('socket.io');
+const path = require('path');
+
+
 
 //EXPRESS
 const app = express();
@@ -30,7 +31,11 @@ partialsDir:__dirname+"views/partials"
 app.set("views", "./views");  
 app.set("view engine", "hbs"); //SETEAMOS EL MOTOR DE PLANTILLA
 
-
+//CONEXION IO
+io.on('connection', socket => {
+    console.log('CLIENTE CONECTADO')  
+})
+app.io =io;
 
 httpServer.listen(8080, () => {
 
@@ -39,4 +44,4 @@ httpServer.listen(8080, () => {
 
 });
 
-httpServer.on('error', (error:any) => console.log(`ERROR EN SERVIDOR: ${error}`));
+httpServer.on('error', (error) => console.log(`ERROR EN SERVIDOR: ${error}`));

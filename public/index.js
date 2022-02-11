@@ -1,13 +1,33 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-//USO DE LIBRERIA PARA CLIENTE EN TYPESCRIPT DE IO SOCKET (ADEMAS INSTALAR npm install socket.io-client)
-var socket_io_client_1 = require("socket.io-client");
-// please note that the types are reversed
-var socket = socket_io_client_1.io();
-//FIN DE USO DE //USO DE LIBRERIA PARA CLIENTE EN TYPESCRIPT DE IO SOCKET (ADEMAS INSTALAR npm install socket.io-client)
-var agregarProducto = document.getElementById("#productoAgregar");
-if (agregarProducto) {
-    agregarProducto.addEventListener("submit", function (e) {
-        e.preventDefault();
-    });
-}
+
+  const socket = io();
+ //FIN DE USO DE //USO DE LIBRERIA PARA CLIENTE EN TYPESCRIPT DE IO SOCKET (ADEMAS INSTALAR npm install socket.io-client)
+
+ document.querySelector("#productoAgregar").addEventListener("submit",async (e)=>{
+      e.preventDefault();
+      await fetch("api/productos",{
+        method:"POST",
+        headers: {
+          'Content-Type': 'application/json' 
+        },
+        body:JSON.stringify({
+          nombreProducto:document.querySelector("#nombreProducto").value ,
+          precio: document.querySelector("#precioProducto").value ,
+          thumbnail:document.querySelector("#urlProducto").value 
+        })
+
+      })
+     
+       });
+
+       socket.on("actualizacion_productos",async (data)=>{
+        const fetchTemplateHbs = await fetch("/views/listaProductos.hbs")
+        const templateHbs=fetchTemplateHbs.text();
+        const template = Handlebars.compile(templateHbs);
+        const html = template({productos:data});
+        document.querySelector("#hbsTablaProductos").innerHTML =html;
+       });
+  
+
+ 
+
+
