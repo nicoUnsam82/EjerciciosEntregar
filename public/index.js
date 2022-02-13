@@ -14,20 +14,24 @@
           precio: document.querySelector("#precioProducto").value ,
           thumbnail:document.querySelector("#urlProducto").value 
         })
-
+            
       })
-     
+
        });
 
        socket.on("actualizacion_productos",async (data)=>{
-        const fetchTemplateHbs = await fetch("/views/listaProductos.hbs")
-        const templateHbs=fetchTemplateHbs.text();
-        const template = Handlebars.compile(templateHbs);
-        const html = template({productos:data});
-        document.querySelector("#hbsTablaProductos").innerHTML =html;
+       mostrarProductos(data);
        });
   
+async function mostrarProductos(data){
 
+  const fetchTemplateHbs = await fetch("../views/partials/listaProductos.hbs")
+  const templateHbs=fetchTemplateHbs.text();
+  const template = Handlebars.compile(templateHbs);
+  const html = template({productos:data});
+  document.querySelector("#hbsTablaProductos").innerHTML =html;
+
+}
  
 
 

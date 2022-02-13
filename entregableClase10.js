@@ -28,11 +28,11 @@ layoutsDir:__dirname+"views/layouts",
 partialsDir:__dirname+"views/partials"
 })
 );
-app.set("views", "./views");  
+app.set("views", "./views/partials");  
 app.set("view engine", "hbs"); //SETEAMOS EL MOTOR DE PLANTILLA
 
 //CONEXION IO
-io.on('connection', socket => {
+io.on("actualizacion_productos", socket => {
     console.log('CLIENTE CONECTADO')  
 })
 app.io =io;
