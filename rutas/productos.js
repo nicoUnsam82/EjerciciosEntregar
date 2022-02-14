@@ -29,7 +29,7 @@ router.post('/productos', (req, res) => {
             const producto = await contenedor.guardar(req.body);
             res.send(JSON.stringify(producto));
             //const prueba=[{"nombreProducto":"TV","precio":"123","thumbnail":"http://TV","id":1},{"nombreProducto":"TV","precio":"123","thumbnail":"http://TV","id":2}];
-            req.app.io.sockets.emit("actualizacion_productos",contenedor.obtenerObjetoEnProductos());
+            req.app.io.sockets.emit("actualizacion_productos",await contenedor.obtenerObjetoEnProductos());
         }//FIN ASYNC
         )();
     }
