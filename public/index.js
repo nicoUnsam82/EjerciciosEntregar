@@ -25,7 +25,7 @@
   
 async function mostrarProductos(data){
 
-  const fetchTemplateHbs = await fetch("../views/partials/listaProductos.hbs");
+  const fetchTemplateHbs = await fetch("./views/partials/listaProductos.hbs");
   const templateHbs=fetchTemplateHbs.text();
   const template = Handlebars.compile(templateHbs);
   const html = template({productos:data});
