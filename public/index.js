@@ -12,20 +12,20 @@
         body:JSON.stringify({
           nombreProducto:document.querySelector("#nombreProducto").value ,
           precio: document.querySelector("#precioProducto").value ,
-          thumbnail:document.querySelector("#urlProducto").value 
+          urlProducto:document.querySelector("#urlProducto").value 
         })
             
       })
 
        });
 
-       socket.on("actualizacion_productos",async (data)=>{
+       socket.on("actualizacion_productos",async(data)=>{
        mostrarProductos(data);
        });
   
 async function mostrarProductos(data){
 
-  const fetchTemplateHbs = await fetch("../views/partials/listaProductos.hbs")
+  const fetchTemplateHbs = await fetch("../views/partials/listaProductos.hbs");
   const templateHbs=fetchTemplateHbs.text();
   const template = Handlebars.compile(templateHbs);
   const html = template({productos:data});

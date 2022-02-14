@@ -24,11 +24,11 @@ app.use('/api', productos);
 app.engine("hbs",hbs.engine({
 extname:"hbs",
 defaultLayout:"layout.hbs",
-layoutsDir:__dirname+"views/layouts",
-partialsDir:__dirname+"views/partials"
+layoutsDir:__dirname+"public/views/layouts",
+partialsDir:__dirname+"public/views/partials"
 })
 );
-app.set("views", "./views/partials");  
+app.set("public/views", "./views/partials");  
 app.set("view engine", "hbs"); //SETEAMOS EL MOTOR DE PLANTILLA
 
 //CONEXION IO
