@@ -8,7 +8,8 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <title>EJERCICIOS DE PRACTICA</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        referrerpolicy="no-referrer"></script>
     <script src="/socket.io/socket.io.js"></script>
     <!--JQUERY UI PARA AUTOCOMPLETAR-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
@@ -29,7 +30,7 @@
             </ol>
         </nav>
 
-        <h1 class="encabezado__titulos display-4">EJERCICIO CLASE 10</h1>
+        <h1 class="encabezado__titulos display-4">EJERCICIO CLASE 15</h1>
 
     </header>
 
@@ -56,7 +57,8 @@
                                 </div>
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 ui-widget">
                                     <label for="urlProducto" class="form-label">URL</label>
-                                    <input type="text" class="form-control" id="urlProducto" name="urlProducto" required>
+                                    <input type="text" class="form-control" id="urlProducto" name="urlProducto"
+                                        required>
                                 </div>
 
                                 <!-- BOTON DE ENVIO -->
@@ -80,8 +82,47 @@
                 </div>
             </form>
             <!--FIN DE FORMULARIO-->
+            <!--MENSAJES-->
+            <!--INICIO FORMULARIO DE PRODUCTOS-->
+            <form id="mensajeAgregar" class="row g-6">
+                <!-- CARD 1 -->
+                <div class="col-xl-6 col-md-10 mb-5 d-inline-flex">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 ui-widget">
+                                    <label for="idNombre" class="form-label">ID USUARIO</label>
+                                    <input type="text" class="form-control" id="idNombre" name="idNombre"
+                                        required>
+                                </div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 ui-widget">
+                                    <label for="mensajeContenido" class="form-label">MENSAJE</label>
+                                    <input type="text" class="form-control" id="mensajeContenido" name="mensajeContenido"
+                                        required>
+                                </div>                               
+
+                                <!-- BOTON DE ENVIO -->
+
+                                <div class="col-12 d-inline-flex">
+                                    <input type="submit" class="btn btn-outline-success" value="ENVIAR MENSAJE"
+                                        id="botonEnvioMensajes">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--LISTADOS DE PRODUCTOS-->
+
+                        <div id="mensajesChat">
 
 
+                        </div>
+                        <!--FIN LISTADOS DE PRODUCTOS-->
+                    </div>
+
+                </div>
+            </form>
+            <!--FIN DE FORMULARIO-->
+            
         </section>
 
         <footer class="sticky-footer bg-white">

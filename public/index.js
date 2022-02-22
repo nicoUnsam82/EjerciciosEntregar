@@ -1,5 +1,5 @@
 
-  const socket = io();
+const socket = io();
  //FIN DE USO DE //USO DE LIBRERIA PARA CLIENTE EN TYPESCRIPT DE IO SOCKET (ADEMAS INSTALAR npm install socket.io-client)
 
  document.querySelector("#productoAgregar").addEventListener("submit",async (e)=>{
@@ -33,5 +33,44 @@ async function mostrarProductos(data){
 
 }
  
+//MENSAJES
+
+document.querySelector("#mensajeAgregar").addEventListener("submit",async (e)=>{
+  e.preventDefault();
+const idNombre = document.querySelector("#idNombre").value;
+const mensajeContenido= document.querySelector("#mensajeContenido").value;
+const mensaje = {idNombre : idNombre, mensajeContenido:mensajeContenido};
+socket.emit('nuevoMensaje', mensaje);
+//const html = generarHtmlMensaje(mensaje)
+//document.querySelector("#mensajesChat").innerHTML = html;
+
+});
+
+socket.on('mensajes', mensajes => {
+  const html = generarHtmlLista(mensajes)
+  document.querySelector("#mensajesChat").innerHTML = html;
+  });
+
+
+function generarHtmlMensaje(mensaje) {
+    return (`
+          <div>
+              <b style="color:blue;">${mensaje.idNombre}</b>
+              <i style="color:green;">${mensaje.mensajeContenido}</i>
+          </div>
+      `)
+
+}
+function generarHtmlLista(mensajes) {
+  return mensajes.map(mensaje => {
+      return (`
+          <div>
+              <b style="color:blue;">${mensaje.autor}</b>
+              [<span style="color:brown;">${mensaje.fyh}</span>] :
+              <i style="color:green;">${mensaje.texto}</i>
+          </div>
+      `)
+  }).join(" ");
+}
 
 
