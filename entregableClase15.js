@@ -33,7 +33,7 @@ app.set("public/views", "./views/partials");
 app.set("view engine", "hbs"); //SETEAMOS EL MOTOR DE PLANTILLA
 
 //CONEXION IO
-io.on("actualizacion_productos", async socket => {
+io.on('connection', async socket => {
     console.log('CLIENTE CONECTADO') 
 // CARGA DE MENSAJES
 socket.emit('mensajes', await mensajesApi.listarTodo());

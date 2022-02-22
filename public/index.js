@@ -65,9 +65,9 @@ function generarHtmlLista(mensajes) {
   return mensajes.map(mensaje => {
       return (`
           <div>
-              <b style="color:blue;">${mensaje.autor}</b>
+              <b style="color:blue;">${mensaje.idNombre}</b>
               [<span style="color:brown;">${mensaje.fyh}</span>] :
-              <i style="color:green;">${mensaje.texto}</i>
+              <i style="color:green;">${mensaje.mensajeContenido}</i>
           </div>
       `)
   }).join(" ");
