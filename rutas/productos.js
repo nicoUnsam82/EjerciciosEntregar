@@ -1,8 +1,25 @@
 const cl_Contenedor= require("../clases/contenedor.js");
+const cl_ContenedorBd= require("../clases/contenedorBd");
+
+
 const express = require('express');
 const router = express.Router();
 
 let contenedor = new cl_Contenedor;
+const contenedorMysql = new cl_ContenedorBd(
+    {
+      client: "mysql",
+      connection: {
+        host: "127.0.0.1",
+        user: "root",
+        database: "productos",
+      },
+      pool: { min: 0, max: 7 },
+    },
+    "productos"
+  );
+//CREAMOS TABLA DE PRODUCTOS
+contenedorMysql.crearTabla().then(console.log);
 
 router.get('/productos', (req, res) => {
 
@@ -26,9 +43,12 @@ router.post('/productos', (req, res) => {
     try {
         (async () => {
             console.log(req.body);
-            const producto = await contenedor.guardar(req.body);
-            res.send(JSON.stringify(producto));
-            req.app.io.sockets.emit("actualizacion_productos",await contenedor.obtenerObjetoEnProductos());
+            await contenedorMysql.guardar(req.body);
+            const productos = await contenedorMysql.obtenerDatosBase();
+            console.log(productos);
+            //const producto = await contenedor.guardar(req.body);
+            //res.send(JSON.stringify(producto));
+            req.app.io.sockets.emit("actualizacion_productos",productos);
         }//FIN ASYNC
         )();
     }

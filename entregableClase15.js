@@ -1,12 +1,20 @@
 const express = require("express");
 const hbs= require("express-handlebars");
 const productos = require('./rutas/productos');
+const cl_ContenedorBd= require("./clases/contenedorBd");
 const { Server: HttpServer } = require('http');
 const { Server: IOServer } = require('socket.io');
 const path = require('path');
 const contenerdorMensajes = require('./clases/contenedorMsj');
 
-
+//BASE DE DATOS PARA MENSAJES
+const contenedorSqlite = new cl_ContenedorBd(
+    {
+      client: "sqlite3",
+      connection: { filename: "./mydb.sqlite" },
+    },
+    "mensajes"
+  );
 //EXPRESS
 const app = express();
 
