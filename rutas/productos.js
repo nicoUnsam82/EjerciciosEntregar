@@ -1,29 +1,22 @@
 const cl_Contenedor = require("../clases/contenedor.js");
-const cl_ContenedorBd = require("../clases/contenedorBd");
-
-
 const express = require('express');
+const faker = require("@faker-js/faker");
 const router = express.Router();
 
 let contenedor = new cl_Contenedor;
-const contenedorMysql = new cl_ContenedorBd(
-    {
-        client: "mysql",
-        connection: {
-            host: "127.0.0.1",
-            user: "root",
-            database: "productos",
-        },
-        pool: { min: 0, max: 7 },
-    },
-    "productos"
-);
-//UTILIZAMOS LA BASE DE DATOS POR CADA POST PARA GUARDAR LA INFO TANTO EN MEMORIA COMO EN LA BASE Y DE LA BASE LA PUBLICAMOS PO IO SOCKET
+
+const productosAleatorios = () => ({
+    id: faker.number.number({ max: 5 }),
+    nombreProducto: faker.commerce.productName(),
+    precio: faker.number.number({ max: 1000 }),
+    urlProducto: faker.image.imageUrl()
+})
+
+
 router.get('/productos', (req, res) => {
 
     try {
         (async () => {
-
             const productos = await contenedor.obtenerObjetoEnProductos();
             res.send(JSON.stringify(productos));
             console.log(productos);
@@ -42,31 +35,9 @@ router.post('/productos', (req, res) => {
     try {
         (async () => {
             console.log(req.body);
-            contenedorMysql.conectar(
-                {
-                    client: "mysql",
-                    connection: {
-                        host: "127.0.0.1",
-                        user: "root",
-                        database: "productos",
-                    },
-                    pool: { min: 0, max: 7 },
-                },
-                "productos"
-            );
-            const productos = await contenedorMysql
-                .isExistTable("productos")
-                .then((isExist) => (isExist ? true : contenedorMysql.crearTablaProductos("productos")))
-                .then(() => contenedorMysql.insertarProductos("productos", req.body))
-                .then((rows) => {
-                    console.log(rows);
-                    return contenedorMysql.obtenerProductos("productos");
-                })
-                .finally(() => contenedorMysql.desconectar());
-
-            //const producto = await contenedor.guardar(req.body);
-            //res.send(JSON.stringify(producto));
-            req.app.io.sockets.emit("actualizacion_productos", productos);
+            const producto = await contenedor.guardar(req.body);
+            res.send(JSON.stringify(producto));
+            req.app.io.sockets.emit("actualizacion_productos", await contenedor.obtenerObjetoEnProductos());
         }//FIN ASYNC
         )();
     }
@@ -77,6 +48,27 @@ router.post('/productos', (req, res) => {
 
     }
 
+
+});
+
+router.get('/productos-prueba', (req, res) => {
+    try {
+        (async () => {
+            const numeroElementos = 5;
+            const resultado = [];
+            for (let i = 0; i < numeroElementos; i++) {
+                result.push(productosAleatorios(i))
+            }
+            res.send(JSON.stringify(resultado));
+        }//FIN ASYNC
+        )();
+    }
+    catch (e) {
+
+
+        res.send(e);
+
+    }
 
 });
 

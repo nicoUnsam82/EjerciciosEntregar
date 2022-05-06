@@ -1,24 +1,26 @@
 {
-  "name": "clase-15",
+  "name": "clase-21",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@faker-js/faker": "^6.3.1",
     "@vscode/sqlite3": "^5.0.7",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
     "knex": "^1.0.3",
     "mysql": "^2.18.1",
+    "normalizr": "^3.6.2",
     "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.7"
   },
   "devDependencies": {
     "@types/node": "^17.0.8"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node entregableClase15.js"
+    "start": "node entregableClase21.js"
   },
   "author": "",
   "license": "ISC"
